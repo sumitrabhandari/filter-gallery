@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <h2 class="heading">Filter Image Gallery</h2>
+        <ul>
+            <li class="list active" data-filter="all">All</li>
+            <li class="list" data-filter="mobile">mobile</li>
+            <li class="list" data-filter="camera">camera</li>
+            <li class="list" data-filter="watch">Watch</li>
+            <li class="list" data-filter="shoe">Shoe</li>
+            <li class="list" data-filter="headphone">Headphone</li>
+        </ul>
+        <div class="product">
+            <div class="itemBox" data-item="mobile"><img src="img/mobile.jpg" alt=""></div>
+            <div class="itemBox" data-item="Watch"><img src="img/watch.jpg" alt=""></div>
+            <div class="itemBox" data-item="camera"><img src="https://img.freepik.com/free-photo/top-view-photography-accesories-with-copy-space_23-2148363427.jpg?w=900&t=st=1686441260~exp=1686441860~hmac=ae54c3b16373298095a2eebbb1677923736cfbed0289b31cb4e00dbb6ed0841a" alt=""></div>
+            <div class="itemBox" data-item="watch"><img src="img/watch 2.jpg" alt=""></div>
+            <div class="itemBox" data-item="shoe"><img src="https://img.freepik.com/free-photo/elegant-black-leather-shoes-men-black-background-photo-studio-style-ai-generative_123827-23442.jpg?t=st=1686441400~exp=1686442000~hmac=c25f88948fe064ddcad6d9e384f54945c27fed2eef3daaee06d15a60c12ccb52" alt=""></div>
+            <div class="itemBox" data-item="headphone"><img src="https://img.freepik.com/free-photo/headphones-stereo-equipment-single-object-technology-generated-by-ai_188544-10146.jpg?w=996&t=st=1686441460~exp=1686442060~hmac=cae4ba106e8933e4b4707a9ce824928093f1b8d4130689452764f0d8164bcb3f" alt=""></div>
+        </div>
+    </section>
+
+    <script>
+        let list = document.querySelectorAll('.list');
+        let itemBox = document.querySelectorAll('.itemBox');
+    
+        for (let i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', function() {
+                for (let j = 0; j < list.length; j++) {
+                    list[j].classList.remove('active');
+                }
+                this.classList.add('active');
+                let dataFilter = this.getAttribute('data-filter');
+                for (let k = 0; k < itemBox.length; k++) {
+                    itemBox[k].classList.remove('active');
+                    itemBox[k].classList.add('hide');
+    
+                    if (itemBox[k].getAttribute('data-item') == dataFilter || dataFilter == "all") {
+                        itemBox[k].classList.remove('hide');
+                        itemBox[k].classList.add('active');
+                    }
+                }
+            });
+        }
+    </script>
+    
+</body>
+</html>
